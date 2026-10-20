@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Con cảm ơn bố ❤️</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  min-height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(circle at center,#350814 0%,#100207 45%,#030104 100%);
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:white;
+}
+.container{text-align:center;position:relative;z-index:2}
+.heart{
+  width:210px;height:210px;
+  position:relative;
+  margin:0 auto 45px;
+  transform:rotate(-45deg);
+  background:#ff3158;
+  border-radius:20px;
+  box-shadow:0 0 25px #ff3158,0 0 70px rgba(255,49,88,.7);
+  animation:beat 1.25s infinite;
+}
+.heart:before,.heart:after{
+  content:"";position:absolute;
+  width:210px;height:210px;
+  background:#ff3158;border-radius:50%;
+}
+.heart:before{top:-105px;left:0}
+.heart:after{left:105px;top:0}
+.heart span{
+  position:absolute;
+  z-index:3;
+  transform:rotate(45deg);
+  width:300px;
+  left:-45px;
+  top:76px;
+  font-size:clamp(27px,5vw,48px);
+  font-weight:700;
+  text-shadow:0 0 10px white,0 0 25px #fff;
+  white-space:nowrap;
+}
+.subtitle{
+  margin-top:25px;
+  font-size:20px;
+  opacity:.9;
+  letter-spacing:1px;
+}
+@keyframes beat{
+  0%,100%{transform:rotate(-45deg) scale(1)}
+  50%{transform:rotate(-45deg) scale(1.09)}
+}
+.floating-heart{
+  position:fixed;
+  bottom:-30px;
+  font-size:20px;
+  animation:floatUp linear forwards;
+  pointer-events:none;
+  filter:drop-shadow(0 0 8px #ff4d6d);
+}
+@keyframes floatUp{
+  from{transform:translateY(0) scale(.7) rotate(0deg);opacity:0}
+  10%{opacity:1}
+  to{transform:translateY(-110vh) scale(1.4) rotate(25deg);opacity:0}
+}
+.spark{
+  position:fixed;width:4px;height:4px;border-radius:50%;
+  background:#fff;box-shadow:0 0 10px #ff9aaa;
+  animation:sparkle 2s infinite alternate;
+}
+@keyframes sparkle{from{opacity:.15;transform:scale(.5)}to{opacity:1;transform:scale(1.5)}}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="heart"><span>Con cảm ơn bố</span></div>
+  <div class="subtitle">❤️ Cảm ơn bố vì tất cả ❤️</div>
+</div>
+
+<script>
+function createHeart(){
+  const h=document.createElement("div");
+  h.className="floating-heart";
+  h.textContent=["❤️","💖","💕","💗","💓"][Math.floor(Math.random()*5)];
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(4+Math.random()*5)+"s";
+  h.style.fontSize=(14+Math.random()*25)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),10000);
+}
+setInterval(createHeart,350);
+
+for(let i=0;i<35;i++){
+  const s=document.createElement("div");
+  s.className="spark";
+  s.style.left=Math.random()*100+"vw";
+  s.style.top=Math.random()*100+"vh";
+  s.style.animationDelay=Math.random()*2+"s";
+  document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
